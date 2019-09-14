@@ -21,7 +21,6 @@ public class MapReduceFunction implements RequestHandler<String, Map<String, Lon
     public Map<String, Long> handleRequest(String s, Context context) {
 
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                .withCredentials(new EnvironmentVariableCredentialsProvider())
                 .withRegion(Regions.US_EAST_2)
                 .build();
         S3Object file = s3Client.getObject(new GetObjectRequest("uoc-words-count", "prueba.txt"));
